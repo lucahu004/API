@@ -9,16 +9,16 @@
 <button type="button" (click)="makeTypedRequest()">GET tipizzata</button>
 
 <!--Uso un ciclo for per scandire tutta la lista di dischi-->
-<div *ngFor="let record of fooData">
-    <h4>{{record.title}} - <i>{{record.artist}}</i></h4>
+<div *ngFor="let article of articleData">
+    <h4>{{article.titolo}}</h4>
     <table>
         <tr>
-            <td>Year</td>
-            <td><i>{{record.year}}</i></td>
+            <td>Url</td>
+            <td><i>{{article.url}}</i></td>
         </tr>
         <tr>
-            <td>Company</td>
-            <td><i>{{record.company}}</i></td>
+            <td>Like</td>
+            <td><i>{{article.like}}</i></td>
         </tr>
     </table>
     <hr>

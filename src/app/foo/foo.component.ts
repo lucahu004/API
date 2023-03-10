@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Foo } from './foo.model';
+import { article } from './foo.model';
 
 @Component({
   selector: 'app-foo',
@@ -14,7 +15,9 @@ export class FooComponent {
   dataPost: Object;
   o :Observable<Object>;
   fooData : Foo[];
+  articleData: article[];
   oFoo : Observable<Foo[]>;
+  oArticle: Observable<article[]>;
 
   constructor(public http: HttpClient) {
 
@@ -25,7 +28,7 @@ export class FooComponent {
     this.loading = true; 
     //Facciamo una get e otteniamo l'oggetto Observable che attende la risposta
     //this.o = this.http.get('https://my-json-server.typicode.com/PaoloCarugati/dischi/records/1');
-    this.o = this.http.get('https://my-json-server.typicode.com/PaoloCarugati/dischi/records/');
+    this.o = this.http.get('https://my-json-server.typicode.com/lucahu004/-mock-endpoint-api/articles');
     //Attacchiamo all'Observable o un metodo "observer" che verrà lanciato quando arriva la 
     //risposta
     this.o.subscribe(this.getData);
@@ -57,8 +60,10 @@ export class FooComponent {
    makeTypedRequest() : void
    {
      //oFoo : Observable<Foo[]>; va dichiarato tra gli attributi della classe 
-     this.oFoo = this.http.get<Foo[]>('https://my-json-server.typicode.com/PaoloCarugati/dischi/records');
-     this.oFoo.subscribe(d => {this.fooData = d;});
+     //this.oFoo = this.http.get<Foo[]>('https://my-json-server.typicode.com/lucahu004/-mock-endpoint-api/articles');
+     //this.oFoo.subscribe(d => {this.fooData = d;});
+     this.oArticle = this.http.get<article[]>('https://my-json-server.typicode.com/lucahu004/-mock-endpoint-api/articles')
+     this.oArticle.subscribe(d =>{this.articleData = d;});
    }  
  
 
@@ -67,7 +72,7 @@ export class FooComponent {
   makeCompactPost(): void {
     this.loading = true;
     this.http
-      .post('https://my-json-server.typicode.com/PaoloCarugati/dischi/records',
+      .post('https://my-json-server.typicode.com/lucahu004/-mock-endpoint-api/articles',
         JSON.stringify({
           "id": 5,
           "title": "Storia di un minuto",

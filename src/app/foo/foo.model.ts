@@ -6,3 +6,10 @@ export class Foo
     year: number;
     company: string;
 }
+
+export class article{
+    id: number;
+    titolo: string;
+    url: string;
+    like: number
+}
